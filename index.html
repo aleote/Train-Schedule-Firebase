@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Train Schedule</title>
+
+	  <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+
+	 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:900|Roboto" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="container">
+
+	<div class="jumbotron" style="background-color: #5b0707 ; color: white;">
+		<h1 class="text-center"><strong><i class="glyphicon glyphicon-hourglass"></i> Train Schedule </strong></h1>
+	</div>
+
+
+	<div class="row">
+		<div class="col-sm-12">
+		<br>
+
+			<div class="panel panel-primary">
+
+				<div class="panel-heading" style="background-color: black ; color:white; ">
+					<h3 class="panel-title" style="font-size: 25px"><strong><i class="fa fa-table"></i> Current Train Schedule</strong></h3>
+				</div>
+				<div class="panel-body" style="background-color: #5b0707; color: white;">
+					<table class="table table-hover" id="trainTable">
+						<thead>
+							<tr>
+								<th > Name </th>
+								<th> Destination</th>
+								<th> Next Arrival</th>
+								<th> Frequency(min)</th>
+								<th> Minutes Away</th>
+							</tr>
+						</thead>
+						<tbody class="tBody">
+							
+						</tbody>
+					</table>
+				</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+	<div class="row">
+		<div class="col-sm-12">
+
+
+			<hr>
+
+
+
+	<div class="row">
+		<div class="col-sm-12">
+		<br>
+
+			<div class="panel titlelines">
+				<div class="panel-heading panelhead">
+					<h3 class="panel-title" style="font-size: 25px"><strong><i class="glyphicon glyphicon-search"></i> Search </strong></h3>
+				</div>
+				<div class="panel-body">
+
+					<form role="form">
+
+					  <div class="form-group">
+					    <label for="search" > Train Name </label>
+					    <input type="text" class="form-control" id="searchTerm">
+					  </div>
+
+					  <div class="form-group">
+					    <label for="dest">Destination:</label>
+						<input type="text" class="form-control" id="whereTo">
+						
+					  </div>
+
+					  <div class="form-group">
+					    <label for="time">Frist Train Time (military time):</label>
+					    <input type="text" class="form-control" id="military">
+					  </div>
+
+					  <div class="form-group">
+					    <label for="frq">Frequency (mins):</label>
+					    <input type="text" class="form-control" id="frequency">
+					  </div>
+
+					  <button type="submit" class="btn btn-default" id="search"><i class="search"></i> Search</button>
+  					  <button type="button" class="btn btn-default" id="clear"><i class="clear"></i> Clear Results</button>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+		</div>
+	</div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+
+
+<script type="text/javascript" src="assets/javascript/train.js"></script>
+
+</body>
+</html>
