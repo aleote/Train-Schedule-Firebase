@@ -13,6 +13,7 @@
 
 //creating my var to reference the database
 var database = firebase.database();
+var currentTime = moment();
 
 //create values
 var trainName = "";
@@ -31,7 +32,7 @@ $("#search").on("click",function(){
 
   trainName = $("#searchTerm").val().trim();
   destination = $("#whereTo").val().trim();
-  time = $("#military").val().trim();
+  time = $("#time-input").val().trim();
   frequency = $("#frequency").val().trim();
 
 
@@ -43,7 +44,8 @@ $("#search").on("click",function(){
     trainName,
     destination ,
     time,
-    frequency
+    frequency,
+    // timeAdded: firebase.database.ServerValue.TIMESTAMP
   });
 
 });
@@ -53,11 +55,54 @@ $("#search").on("click",function(){
 
 database.ref().on("value", function(snapshot){
 
+  // var trainName=snapshot.val().trainName;
+  // var destination = snapshot.val().destination;
+  // var time = snapshot.val().time;
+  // var frequency = snapshot.val().frequency;
+
 
   console.log(snapshot.val().trainName);
   console.log(snapshot.val().destination);
   console.log(snapshot.val().time);
   console.log(snapshot.val().frequency);
+  console.log((moment().format("HH:mm")));
+
+
+
+
+// I really tried to get this time working but I just couldnt figure out what it was exactly doing. 
+// The example used in class is how I created this, but I don't understand how it is working and 
+// how to add it to the html 
+
+// var frequency = parseInt(frequency);
+//   //CURRENT TIME
+//   var currentTime = moment();
+//   console.log("CURRENT TIME: " + moment().format('HH:mm'));
+//   //FIRST TIME: PUSHED BACK ONE YEAR TO COME BEFORE CURRENT TIME
+//   // var dConverted = moment(time,'hh:mm').subtract(1, 'years');
+//   var dConverted = moment(childSnapshot.val().time, 'HH:mm').subtract(1, 'years');
+//   console.log("DATE CONVERTED: " + dConverted);
+//   var trainTime = moment(dConverted).format('HH:mm');
+//   console.log("TRAIN TIME : " + trainTime);
+  
+//   //DIFFERENCE B/T THE TIMES 
+//   var tConverted = moment(trainTime, 'HH:mm').subtract(1, 'years');
+//   var tDifference = moment().diff(moment(tConverted), 'minutes');
+//   console.log("DIFFERENCE IN TIME: " + tDifference);
+//   //REMAINDER 
+//   var tRemainder = tDifference % frequency;
+//   console.log("TIME REMAINING: " + tRemainder);
+//   //MINUTES UNTIL NEXT TRAIN
+//   var minsAway = frequency - tRemainder;
+//   console.log("MINUTES UNTIL NEXT TRAIN: " + minsAway);
+//   //NEXT TRAIN
+//   var nextTrain = moment().add(minsAway, 'minutes');
+// console.log("ARRIVAL TIME: " + moment(nextTrain).format('HH:mm A'));
+
+
+
+
+
 
 
 
@@ -65,7 +110,7 @@ var newTr = $("<tr>");
 
 
 
-// I am trying to place the information submitted to my page
+//place the information submitted to my page
 
 var trainNameId = $("<td>").html(snapshot.val().trainName);
     newTr.append(trainNameId);
@@ -84,23 +129,6 @@ var frequencyId = $("<td>").html(snapshot.val().frequency);
    $(".form-control").val("");
  tBody.append(newTr);
 
-
-
-
-// var differenceTimes = moment().diff(moment.unix(fireFirstTrain), "minutes");
-//     var remainder = moment().diff(moment.unix(fireFirstTrain), "minutes") % frequency ;
-//     var minutes = frequency - remainder;
-
-//     var arrival = moment().add(minutes, "m").format("hh:mm A"); 
-//     console.log(minutes);
-//     console.log(arrival);
-
-//     console.log(moment().format("hh:mm A"));
-//     console.log(arrival);
-//     console.log(moment().format("X"));
-
-//     // Append train data to table 
-//     $("#trainSchedule > tbody").append("<tr><td>" + fireName + "</td><td>" + fireDestination + "</td><td>" + fireFrequency + "</td><td>" + arrival + "</td><td>" + minutes + "</td></tr>");
 
   });
 
